@@ -18,6 +18,7 @@ class Note {
         this.over = false;
         this.touched = false;
         this.angle;
+        this.col = nodeColor();
         let options = {
             friction: 0,
             restitution: 0.77,
@@ -49,7 +50,7 @@ class Note {
                 g.line(this.px, this.py, this.x, this.y);
                 g.blendMode(BLEND);
                 if (this.over) {
-                    fill(180, 30, 0, 45);
+                    fill(this.col);
                     noStroke();
                     ellipse(0, 0, this.r * 2);
                     stroke(0);
@@ -73,14 +74,14 @@ class Note {
                 }else{
                     stroke(0, 45);
                     strokeWeight(1.5);
-                    fill(0, 125);
+                    fill(this.col);
                     ellipse(0, 0, this.r * 2);
                 }
             }
         pop();
         if (this.creatingSpring) {
             // paint growing circle
-            g.fill(0, 25);
+            g.fill(this.col);
             g.blendMode(MULTIPLY);
             g.stroke(0, 5);
             g.ellipse(this.x, this.y, this.springDist * 2);

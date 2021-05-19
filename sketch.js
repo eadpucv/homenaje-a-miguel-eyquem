@@ -269,3 +269,9 @@ function updateGraphics() {
 	g.rect(0, 0, w, h);
 	g.blendMode(BLEND);
 }
+
+
+function nodeColor(){
+	let col = color(random(250, 255), random(250, 255), random(250, 255));
+	return col;
+}
