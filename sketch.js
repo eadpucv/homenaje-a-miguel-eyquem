@@ -1,7 +1,8 @@
 /**
- *  Acto del Momento Simultáneo
+ *  Acto de Homenaje a Miguel
+ *  fork: Acto del Momento Simultáneo
  *  Herbert Spencer
- *  2020
+ *  2021
  */
 
 let sketch; // html canvas object
@@ -34,7 +35,7 @@ function preload() {
 	// calculate width and height from html div
 	w = document.getElementById("p5").offsetWidth;
 	h = document.getElementById("p5").offsetHeight;
-	let url = "https://wiki.ead.pucv.cl/api.php?action=ask&format=json&maxlag=2000&uselang=user&errorformat=bc&query=[[Categor%C3%ADa:Acto%20del%20momento%20simult%C3%A1neo]]|%3FNota|%3FAutor|%3FPosici%C3%B3n|%3FImagen|limit=900";
+	let url = "https://wiki.ead.pucv.cl/api.php?action=ask&format=json&maxlag=2000&uselang=user&errorformat=bc&query=[[Categor%C3%ADa:Acto%20homenaje%20a%20Miguel]]|%3FNota|%3FAutor|%3FPosici%C3%B3n|%3FImagen|limit=900";
 	data = loadJSON(url, gotData, 'jsonp');
 	// fonts
 	serif = loadFont("fonts/Alegreya-Regular.ttf");
