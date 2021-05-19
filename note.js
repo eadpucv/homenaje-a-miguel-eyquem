@@ -18,7 +18,6 @@ class Note {
         this.over = false;
         this.touched = false;
         this.angle;
-        this.col = nodeColor();
         let options = {
             friction: 0,
             restitution: 0.77,
@@ -50,7 +49,7 @@ class Note {
                 g.line(this.px, this.py, this.x, this.y);
                 g.blendMode(BLEND);
                 if (this.over) {
-                    fill(this.col);
+                    fill(180, 30, 0, 45);
                     noStroke();
                     ellipse(0, 0, this.r * 2);
                     stroke(0);
@@ -74,16 +73,16 @@ class Note {
                 }else{
                     stroke(0, 45);
                     strokeWeight(1.5);
-                    fill(this.col);
+                    fill(0, 125);
                     ellipse(0, 0, this.r * 2);
                 }
             }
         pop();
         if (this.creatingSpring) {
             // paint growing circle
-            g.fill(this.col);
+            g.fill(0, 5);
             g.blendMode(MULTIPLY);
-            g.stroke(0, 5);
+            g.stroke(0, 1);
             g.ellipse(this.x, this.y, this.springDist * 2);
             // check all other notes
             for (let other of notes) {
@@ -107,7 +106,7 @@ class Note {
                         springs.push(spring);
                         this.creatingSpring = false;
                     }
-                    this.springDist += 0.01;  /* i don't understand this number, it should be 1 */
+                    this.springDist += 1;  /* i don't understand this number, it should be 1 */
                 }
             }
         }
