@@ -14,10 +14,12 @@ class Note {
         this.title = title;
         this.content = content;
         this.author = author;
-        this.r = map(this.title.length, 2, 40, 3, 12);
+        this.r = map(this.title.length, 2, 40, 5, 32);
         this.over = false;
         this.touched = false;
         this.angle;
+        this.col = color(random(210, 255), random(60, 180), random(10), 90);
+        this.colOver = color(red(this.col)*.8, green(this.col)*.8, 2, 95);
         let options = {
             friction: 0,
             restitution: 0.77,
@@ -44,15 +46,15 @@ class Note {
         rotate(this.angle);
             if(this.touched){
                 g.blendMode(MULTIPLY);
-                g.stroke(0, 150);
+                g.stroke(this.colOver);
                 g.strokeWeight(1);
                 g.line(this.px, this.py, this.x, this.y);
                 g.blendMode(BLEND);
                 if (this.over) {
-                    fill(180, 30, 0, 45);
+                    fill(this.colOver);
                     noStroke();
                     ellipse(0, 0, this.r * 2);
-                    stroke(0);
+                    stroke(this.colOver);
                     strokeWeight(3);
                     point(0, 0); 
                 }else{
@@ -66,23 +68,23 @@ class Note {
                 }
             }else{
                 if (this.over) {
-                    fill(180, 30, 0, 45);
+                    fill(this.colOver);
                     stroke(180, 30, 0, 250);
                     strokeWeight(1);
                     ellipse(0, 0, this.r * 2);
                 }else{
-                    stroke(0, 45);
+                    noStroke();
                     strokeWeight(1.5);
-                    fill(0, 125);
+                    fill(this.col);
                     ellipse(0, 0, this.r * 2);
                 }
             }
         pop();
         if (this.creatingSpring) {
             // paint growing circle
-            g.fill(0, 5);
+            g.fill(this.colOver);
             g.blendMode(MULTIPLY);
-            g.stroke(0, 1);
+            g.noStroke();
             g.ellipse(this.x, this.y, this.springDist * 2);
             // check all other notes
             for (let other of notes) {
@@ -106,7 +108,7 @@ class Note {
                         springs.push(spring);
                         this.creatingSpring = false;
                     }
-                    this.springDist += 1;  /* i don't understand this number, it should be 1 */
+                    this.springDist += .1;  /* i don't understand this number, it should be 1 */
                 }
             }
         }
